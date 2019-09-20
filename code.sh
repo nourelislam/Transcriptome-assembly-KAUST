@@ -7,3 +7,5 @@ cat Oryza_sativa.IRGSP-1.0.dna.chromosome.1.fa Oryza_sativa.IRGSP-1.0.dna.chromo
 for R1 in *R1*; do R2=${R1//R1_001.fastq/R2_001.fastq}; sample=${R1%-D501_L001_R1_001.fastq}; hisat2 -x hisat2_idx/Oryza_sativa -q -1 $R1 -2 $R2 -S $sample.sam -t --summary-file $sample.summary.txt --dta --novel-splicesite-outfile $sample.tsv -p 5; done
 # --dta for long anchor alignment 
 #--novel-splicesite-outfile to use it on the seceond run of alignment as an input of splice sites
+
+for R1 in *R1*; do R2=${R1//R1_001.fastq/R2_001.fastq}; sample=${R1%-D501_L001_R1_001.fastq}; hisat2 -x hisat2_idx/Oryza_sativa -q -1 $R1 -2 $R2 -S $sample.sam -t --summary-file $sample_withNovel.summary.txt --novel-splicesite-infile $sample.tsv -p 9; done

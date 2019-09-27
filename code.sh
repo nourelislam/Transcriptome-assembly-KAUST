@@ -10,5 +10,5 @@ for R1 in *R1*; do R2=${R1//R1_001.fastq/R2_001.fastq}; sample=${R1%_R1_001.fast
 #--novel-splicesite-outfile to use it on the seceond run of alignment as an input of splice sites
 
 ### 2nd iteration alignment with the splicesites file in ########
-for R1 in *R1*; do R2=${R1//R1_001.fastq/R2_001.fastq}; sample=${R1%_R1_001.fastq}; hisat2 -x hisat2_idx/Oryza_sativa -q -1 $R1 -2 $R2 -S $sample.sam -t --summary-file $sample-withNovel.summary.txt --novel-splicesite-infile $sample.tsv -p 9; done
+for R1 in *R1*; do R2=${R1//R1_001.fastq/R2_001.fastq}; sample=${R1%_R1_001.fastq}; hisat2 -x hisat2_idx/Oryza_sativa -q -1 $R1 -2 $R2 -S $sample.sam -t --summary-file $sample-withNovel.summary.txt --novel-splicesite-infile $sample.tsv -p 8; samtools view -hbo $sample.bam $sample.sam; rm $sample.sam; done
 for file in *.sam;do sample=${file%.sam}; samtools view -hbo $sample.bam $sample.sam;done

@@ -12,3 +12,12 @@ for R1 in *R1*; do R2=${R1//R1_001.fastq/R2_001.fastq}; sample=${R1%_R1_001.fast
 ### 2nd iteration alignment with the splicesites file in ########
 for R1 in *R1*; do R2=${R1//R1_001.fastq/R2_001.fastq}; sample=${R1%_R1_001.fastq}; hisat2 -x hisat2_idx/Oryza_sativa -q -1 $R1 -2 $R2 -S $sample.sam -t --summary-file $sample-withNovel.summary.txt --novel-splicesite-infile $sample.tsv -p 8; samtools view -hbo $sample.bam $sample.sam; rm $sample.sam; done
 for file in *.sam;do sample=${file%.sam}; samtools view -hbo $sample.bam $sample.sam;done
+
+#stringtie assemly#
+for file in *bam; do sample=${file%_sorted.bam}; stringtie -p 5 $file -o $sample.gtf -A $sample.tsv -l $sample;done
+
+#stringtie merge#
+stringtie --merge -p 4 M_19_0207_33-C-3-1_D701.gtf M_19_0208_33-C-3-2_D702.gtf M_19_0213_33-C-6-1_D708.gtf M_19_0214_33-C-6-2_D709-D501_L001.gtf -o 33-C-merged.gtf -l 33-C
+
+#gff-compare#
+gffcompare *merged.gtf -r Oryza_sativa.IRGSP-1.0.44.gtf -R -V

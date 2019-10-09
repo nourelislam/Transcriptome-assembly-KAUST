@@ -21,3 +21,5 @@ stringtie --merge -p 4 M_19_0207_33-C-3-1_D701.gtf M_19_0208_33-C-3-2_D702.gtf M
 
 #gff-compare#
 gffcompare *merged.gtf -r Oryza_sativa.IRGSP-1.0.44.gtf -R -V
+
+stringtie -p 4 -B -G $GTF -o ballgown/M_19_0207_33-C-3-1.gtf M_19_0207_33-C-3-1_D701_sorted.bam

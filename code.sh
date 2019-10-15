@@ -23,3 +23,7 @@ stringtie --merge -p 4 M_19_0207_33-C-3-1_D701.gtf M_19_0208_33-C-3-2_D702.gtf M
 gffcompare *merged.gtf -r Oryza_sativa.IRGSP-1.0.44.gtf -R -V
 
 stringtie -p 4 -B -G $GTF -o ballgown/M_19_0207_33-C-3-1.gtf M_19_0207_33-C-3-1_D701_sorted.bam
+
+##Adding the RG.ID 
+picard=$CONDA_PREFIX/share/picard-2.20.8-0/picard.jar
+java -jar $picard AddOrReplaceReadGroups I=M_19_0207_33-C-3-1_D701_sorted.bam O=M_19_0207_33-C-3-1_D701_rg_sorted.bam  RGID=@K00235:165:H2VVWBBXY:1 RGLB=M_19_0207_33-C-3-1 RGPL=illumina RGPU=@K00235:165:H2VVWBBXY:1.M_19_0207_33-C-3-1 RGSM=M_19_0207

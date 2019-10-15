@@ -27,3 +27,9 @@ stringtie -p 4 -B -G $GTF -o ballgown/M_19_0207_33-C-3-1.gtf M_19_0207_33-C-3-1_
 ##Adding the RG.ID 
 picard=$CONDA_PREFIX/share/picard-2.20.8-0/picard.jar
 java -jar $picard AddOrReplaceReadGroups I=M_19_0207_33-C-3-1_D701_sorted.bam O=M_19_0207_33-C-3-1_D701_rg_sorted.bam  RGID=@K00235:165:H2VVWBBXY:1 RGLB=M_19_0207_33-C-3-1 RGPL=illumina RGPU=@K00235:165:H2VVWBBXY:1.M_19_0207_33-C-3-1 RGSM=M_19_0207
+
+
+
+
+
+

@@ -31,6 +31,10 @@ java -jar $picard AddOrReplaceReadGroups I=M_19_0207_33-C-3-1_D701_sorted.bam O=
 #merge bam files#
 java -jar $picard MergeSamFiles I=M_19_0219_WT-C-3-1_D702-D502_L002_rg_sorted.bam I=M_19_0220_WT-C-3-2_D703-D502_L002_rg_sorted.bam I=M_19_0225_WT-C-6-1_D708-D502_L003_rg_sorted.bam I=M_19_0226_WT-C-6-2_D709-D502_L003_rg_sorted.bam O=WT-C-merged.bam
 
+###stringtie B ###
+stringtie -p5 -B -G gffcmp.combined.gtf -o ballgown/RNAseq_33-F/33-F.gtf -A ballgown/RNAseq_33-F/33-F-gene_abundance.tsv /media/nourelislam/Personal/splice_site-project/sorted/merged/33-F-merged.sorted.bam -l 33-F
+
+
 
 
 

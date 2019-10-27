@@ -34,7 +34,8 @@ java -jar $picard MergeSamFiles I=M_19_0219_WT-C-3-1_D702-D502_L002_rg_sorted.ba
 ###stringtie B ###
 stringtie -p5 -B -G gffcmp.combined.gtf -o ballgown/RNAseq_33-F/33-F.gtf -A ballgown/RNAseq_33-F/33-F-gene_abundance.tsv /media/nourelislam/Personal/splice_site-project/sorted/merged/33-F-merged.sorted.bam -l 33-F
 
-
+##### featurecounts Estimation##
+featureCounts -T4 -a /media/nourelislam/Personal/splice_site-project/sorted/gtf/merged/gffcmp.combined.gtf -g gene_id -o gene_counts.txt *.bam -J -G $FASTA
 
 
 

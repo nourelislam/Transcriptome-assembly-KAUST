@@ -37,5 +37,12 @@ stringtie -p5 -B -G gffcmp.combined.gtf -o ballgown/RNAseq_33-F/33-F.gtf -A ball
 ##### featurecounts Estimation##
 featureCounts -T4 -a /media/nourelislam/Personal/splice_site-project/sorted/gtf/merged/gffcmp.combined.gtf -g gene_id -o gene_counts.txt *.bam -J -G $FASTA
 
+###### Extracting the gene & ref annotation from combined.gtf #####
+grep -e "TCONS_00007307" -e "TCONS_00001556" -e "TCONS_00001668" -e "TCONS_00004700" -e "TCONS_00004802" -e "TCONS_00004807" -e "TCONS_00012118" -e "TCONS_00011013" -e "TCONS_00015975" -e "TCONS_00019568" -e "TCONS_00023659" -e "TCONS_00027566" -e "TCONS_00027605" -e "TCONS_00029910" -e "TCONS_00030288" -e "TCONS_00034537" -e "TCONS_00036057" -e "TCONS_00033431" -e "TCONS_00037598" -e "TCONS_00038309" -e "TCONS_00038404" -e "TCONS_00039046" -e "TCONS_00040926" -e "TCONS_00043218" -e "TCONS_00040133" -e "TCONS_00040191" -e "TCONS_00043945" -e "TCONS_00044035" -e "TCONS_00045039" -e "TCONS_00045040" -e "TCONS_00047673" -e "TCONS_00049518" -e "TCONS_00049576" -e "TCONS_00050661" -e "TCONS_00052824" -e "TCONS_00052901" -e "TCONS_00054407" -e "TCONS_00054540" -e "TCONS_00057639" -e "TCONS_00059914" -e "TCONS_00060095" -e "TCONS_00060216" -e "TCONS_00065908" -e "TCONS_00065122" -e "TCONS_00065666" -e "TCONS_00064822" gffcmp.combined.gtf
+
+
+
+
+
 
 

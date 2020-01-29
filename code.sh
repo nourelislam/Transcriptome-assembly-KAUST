@@ -42,7 +42,7 @@ grep -e "TCONS_00007307" -e "TCONS_00001556" -e "TCONS_00001668" -e "TCONS_00004
 
 
 ############################################
-cat path.txt | while read id; do grep -w "transcript" gffcmp.combined.gtf | grep $id gffcmp.combined.gtf >> frs_genes; done
+cat path.txt | while read id; do grep -w "transcript" gffcmp.combined.gtf | grep $id gffcmp.combined.gtf >> frs_genes.gtf; done
 ##filteration #
 grep -w "transcript" frs_genes.gtf | awk '{print $10, $16 ,$20}' > filt.gtf
 

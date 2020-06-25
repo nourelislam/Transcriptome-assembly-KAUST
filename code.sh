@@ -15,6 +15,15 @@ for R1 in *R1*; do R2=${R1//R1_001.fastq/R2_001.fastq}; sample=${R1%_R1_001.fast
 ## sorting ##
 for file in *.bam;do sample=${file%.bam}; samtools sort $sample.bam -o $sample.sorted.bam;done
 
+##Adding the RG.ID 
+picard=$CONDA_PREFIX/share/picard-2.20.8-0/picard.jar
+java -jar $picard AddOrReplaceReadGroups I=M_19_0207_33-C-3-1_D701_sorted.bam O=M_19_0207_33-C-3-1_D701_rg_sorted.bam  RGID=@K00235:165:H2VVWBBXY:1 RGLB=M_19_0207_33-C-3-1 RGPL=illumina RGPU=@K00235:165:H2VVWBBXY:1.M_19_0207_33-C-3-1 RGSM=M_19_0207
+#merge bam files#
+java -jar $picard MergeSamFiles I=M_19_0219_WT-C-3-1_D702-D502_L002_rg_sorted.bam I=M_19_0220_WT-C-3-2_D703-D502_L002_rg_sorted.bam I=M_19_0225_WT-C-6-1_D708-D502_L003_rg_sorted.bam I=M_19_0226_WT-C-6-2_D709-D502_L003_rg_sorted.bam O=WT-C-merged.bam
+
+##sort merged files##
+samtools sort 33-F-merged.bam -o 33-F-merged.sorted.bam # as an example 
+
 #stringtie assemly#
 for file in *bam; do sample=${file%_sorted.bam}; stringtie -p 5 $file -o $sample.gtf -A $sample.tsv -l $sample;done
 
@@ -27,11 +36,7 @@ gffcompare *merged.gtf -r Oryza_sativa.IRGSP-1.0.44.gtf -R -V
 
 stringtie -p 4 -B -G $GTF -o ballgown/M_19_0207_33-C-3-1.gtf M_19_0207_33-C-3-1_D701_sorted.bam
 
-##Adding the RG.ID 
-picard=$CONDA_PREFIX/share/picard-2.20.8-0/picard.jar
-java -jar $picard AddOrReplaceReadGroups I=M_19_0207_33-C-3-1_D701_sorted.bam O=M_19_0207_33-C-3-1_D701_rg_sorted.bam  RGID=@K00235:165:H2VVWBBXY:1 RGLB=M_19_0207_33-C-3-1 RGPL=illumina RGPU=@K00235:165:H2VVWBBXY:1.M_19_0207_33-C-3-1 RGSM=M_19_0207
-#merge bam files#
-java -jar $picard MergeSamFiles I=M_19_0219_WT-C-3-1_D702-D502_L002_rg_sorted.bam I=M_19_0220_WT-C-3-2_D703-D502_L002_rg_sorted.bam I=M_19_0225_WT-C-6-1_D708-D502_L003_rg_sorted.bam I=M_19_0226_WT-C-6-2_D709-D502_L003_rg_sorted.bam O=WT-C-merged.bam
+
 
 ###stringtie B ###
 stringtie -p5 -B -G gffcmp.combined.gtf -o ballgown/RNAseq_33-F/33-F.gtf -A ballgown/RNAseq_33-F/33-F-gene_abundance.tsv /media/nourelislam/Personal/splice_site-project/sorted/merged/33-F-merged.sorted.bam -l 33-F

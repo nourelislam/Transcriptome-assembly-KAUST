@@ -1,5 +1,4 @@
-for file in *.sam;do sample=${file%.sam}; samtools view -@ 7 -hbo $sample.bam $sample.sam; rm $sample.sam ; samtools sort -@ 7 $sample.bam -o $sample.sorted.bam ;done
-
+for file in *.sam;do sample=${file%.sam}; samtools view -@ 7 -hbo $sample.bam $sample.sam; rm $sample.sam ; samtools sort -@ 7 $sample.bam -o $sample.sorted.bam; rm $sample.bam ;done
 ### merging all bam files ##
 stringtie --merge -p 8 *gtf -o merged.gtf
 ###then stringtie assembly one more time using merged as the reference file ##

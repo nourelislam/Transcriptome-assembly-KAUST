@@ -10,3 +10,6 @@ for file in *bam; do sample=${file%.sorted.bam}; stringtie -p 8 -G ../../Whole_g
 ### featurecount ##
 featureCounts -T4 -a ../merged.ref_guided.gtf -g gene_id -o gene_counts.txt ~/Documents/DS/fastq/sorted/*.bam -G ~/Documents/DS/Whole_genome/whole_genome.fa 
 featureCounts -T4 -a ../merged.ref_guided.gtf -g transcript_id -o transcript_counts.txt ~/Documents/DS/fastq/sorted/*.bam -G ~/Documents/DS/Whole_genome/whole_genome.fa
+
+cat gene_counts.txt | cut -f 1,7-30 > simple_gene_counts.txt
+cat transcript_counts.txt | cut -f 1,7-30 > simple_transcript_counts.txt

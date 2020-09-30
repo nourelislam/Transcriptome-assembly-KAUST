@@ -9,3 +9,5 @@ stringtie --merge -p 8 M-19-4801_WT-S-6-3_D706-D505_L001.gtf M-19-4801_WT-S-6-3_
 
 ### gff compare ##
 gffcompare *merged.gtf -r ~/Documents/DS/Whole_genome/Oryza_sativa.IRGSP-1.0.44.gtf -R -V
+
+featureCounts -T4 -a gtf/gffcmp.combined.gtf -g gene_id -o gene_counts.txt *bam -G ~/Documents/DS/Whole_genome/whole_genome.fa

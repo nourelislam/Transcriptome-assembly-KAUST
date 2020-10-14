@@ -53,6 +53,10 @@ cat path.txt | while read id; do grep $id gffcmp.combined.gtf >> frs_genes.gtf; 
 ##filteration #
 grep -w "transcript" frs_genes.gtf | awk '{print $10, $20}' > filt.gtf
 cat path.txt | while read id; do grep $id filt.gtf >> annotated.gtf; done
+
+## another way ##
+grep "gene_name" gffcmp.combined.gtf | awk '{print $10, $14, $20}' > transcripts_only.txt
+
 #####################
 
 seqkit stats *gz -T | csvtk pretty -t > lane1.tsv

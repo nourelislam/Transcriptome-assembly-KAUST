@@ -12,3 +12,6 @@ STAR --runThreadN 8 --genomeDir ../Whole_genome/GenomeDir --readFilesIn M_19_021
 
 # salmon quant #
 salmon quant -t ../../Whole_genome/Transcriptome.fa -l A -a M_19_0211Aligned.toTranscriptome.out.bam -o salmon_quant -p 8
+## indexing the col 1 and 4 with TSV##
+awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv
+

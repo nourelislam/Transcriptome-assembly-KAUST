@@ -15,3 +15,5 @@ salmon quant -t ../../Whole_genome/Transcriptome.fa -l A -a M_19_0211Aligned.toT
 ## indexing the col 1 and 4 with TSV##
 awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv
 
+## SUPPA2 event detection ##
+suppa.py psiPerEvent --ioe-file ensembl_hg19.events.ioe --expression-file ~/Documents/DS/fastq/STAR_BAM/salmon_quant/simple_quant.tsv -o

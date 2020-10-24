@@ -1,6 +1,9 @@
 # preparing the genome #
 cat Oryza_sativa.IRGSP-1.0.dna.chromosome.1.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.2.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.3.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.4.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.5.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.6.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.7.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.8.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.9.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.10.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.11.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.12.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.Mt.fa Oryza_sativa.IRGSP-1.0.dna.chromosome.Pt.fa > Oryza_sativa.IRGSP.fa
 
+## generate my own transcriptome reference sequence #
+gffread -w Transcriptome.fa -g Oryza_sativa.IRGSP.fa Oryza_sativa.IRGSP-1.0.48.gtf
+
 ### STAR index #
 STAR --runMode genomeGenerate --runThreadN 8 --genomeSAindexNbases 13 --genomeFastaFiles Oryza_sativa.IRGSP.fa --sjdbGTFfile Oryza_sativa.IRGSP-1.0.48.gtf
 

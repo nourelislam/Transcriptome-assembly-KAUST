@@ -16,6 +16,7 @@ salmon quant -t ../../Whole_genome/Transcriptome.fa -l A -a M_19_0211Aligned.toT
 for file in *bam; do sample=${file%Aligned.toTranscriptome.out.bam}; salmon quant -t ../../Whole_genome/Transcriptome.fa -l A -a $file -o $sample -p 8;done
 ## indexing the col 1 and 4 with TSV##
 awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv
+for file in *M_19_02*; do cd $file ;awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv; cd ../; done
 
 ##generate events ##
 suppa.py generateEvents -i ../Oryza_sativa.IRGSP-1.0.48.gtf -o Oryza_sativa.IRGSP -f ioe -e SE SS MX RI FL

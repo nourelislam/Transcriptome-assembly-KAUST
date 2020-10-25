@@ -13,6 +13,7 @@ for R1 in *R1*; do R2=${R1//R1_001.fastq.gz/R2_001.fastq.gz}; sample=${R1%_R1_00
 
 # salmon quant #
 salmon quant -t ../../Whole_genome/Transcriptome.fa -l A -a M_19_0211Aligned.toTranscriptome.out.bam -o salmon_quant -p 8
+for file in *bam; do sample=${file%Aligned.toTranscriptome.out.bam}; salmon quant -t ../../Whole_genome/Transcriptome.fa -l A -a $file -o $sample -p 8;done
 ## indexing the col 1 and 4 with TSV##
 awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv
 

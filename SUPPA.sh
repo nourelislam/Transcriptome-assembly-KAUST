@@ -17,6 +17,7 @@ for file in *bam; do sample=${file%Aligned.toTranscriptome.out.bam}; salmon quan
 ## indexing the col 1 and 4 with TSV##
 awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv
 for file in *M_19_02*; do cd $file ;awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv; cd ../; done
+for file in *M_19_02*; do cd $file ;  awk '{print $1, $4}' OFS='\t' quant.sf > $file.tsv; cd ../ ;done
 ### change col names #
 sed -i -e '1s/TPM/WT-F-6/' simple_quant.tsv
 

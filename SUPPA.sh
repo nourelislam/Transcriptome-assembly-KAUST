@@ -19,7 +19,7 @@ awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv
 for file in *M_19_02*; do cd $file ;awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv; cd ../; done
 for file in *M_19_02*; do cd $file ;  awk '{print $1, $4}' OFS='\t' quant.sf > $file.tsv; cd ../ ;done
 ### change col names #
-sed -i -e '1s/TPM/WT-F-6/' simple_quant.tsv
+sed -e '1s/TPM/33-C-3/' M_19_0207_33-C-3-1_D701-D501_L001 > 33-C-3.tsv
 
 ##generate events ##
 suppa.py generateEvents -i ../Oryza_sativa.IRGSP-1.0.48.gtf -o Oryza_sativa.IRGSP -f ioe -e SE SS MX RI FL

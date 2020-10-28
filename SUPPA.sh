@@ -19,6 +19,8 @@ awk '{print $1, $4}' OFS='\t' quant.sf > simple_quant.tsv
 for file in *M_19_02*; do cd $file ;  awk '{print $1, $4}' OFS='\t' quant.sf > $file.tsv; cd ../ ; done
 for file in *M_19_02*; do cd $file; rm *M_19_02*; done
 for file in *M_19_02*; do cd $file; cat *tsv | cut -f2 > $file.tsv; cd ../; done
+for file in *M_19_02*; do cd $file; mv *M_19_02* ../; cd ../; done
+Paste *.tsv > expression_data.tsv
 ### change col names #
 sed -e '1s/TPM/33-C-3/' M_19_0207_33-C-3-1_D701-D501_L001 > 33-C-3.tsv
 

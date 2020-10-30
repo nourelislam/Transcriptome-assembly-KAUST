@@ -34,5 +34,11 @@ awk '
     1 {print}
 ' *.ioe > ensembl_hg19.events.ioe
 
+
+### after adding rownames on the first col of expression data by nano ###
+awk '{print $1,$4,$5,$6,$7,$12,$13,$14,$15,$16,$17,$18,$19,$22,$23,$24,$25}' OFS='\t' expression_data.tsv > biotic_expression.tsv
+awk '{print $1,$2,$3,$4,$5,$8,$9,$10, $11}' OFS='\t' biotic_expression.tsv > 33.EX.biotic.tsv
+awk '{print $1,$6,$7,$12,$13,$14,$15,$16,$17}' OFS='\t' biotic_expression.tsv > WT.EX.biotic.tsv
+
 ## SUPPA2 event detection ##
 suppa.py psiPerEvent --ioe-file ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --expression-file expression_data.tsv -o events

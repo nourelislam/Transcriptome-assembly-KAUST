@@ -21,7 +21,7 @@ for file in *M_19_02*; do cd $file; rm *M_19_02*; done
 for file in *M_19_02*; do cd $file; cat *tsv | cut -f2 > $file.tsv; cd ../; done
 for file in *M_19_02*; do cd $file; mv *M_19_02* ../; cd ../; done
 for file in *M_19_02*; do cd $file; rm *.tsv; cd ../; done
-Paste *.tsv > expression_data.tsv
+Paste *.tsv > expression_data.tsv  # edit the expression data to only have sample names col -1 col numbers by "nano" ###
 ### change col names #
 sed -e '1s/TPM/33-C-3/' M_19_0207_33-C-3-1_D701-D501_L001 > 33-C-3.tsv
 
@@ -35,4 +35,4 @@ awk '
 ' *.ioe > ensembl_hg19.events.ioe
 
 ## SUPPA2 event detection ##
-suppa.py psiPerEvent --ioe-file ensembl_hg19.events.ioe --expression-file ~/Documents/DS/fastq/STAR_BAM/salmon_quant/simple_quant.tsv -o
+suppa.py psiPerEvent --ioe-file ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --expression-file expression_data.tsv -o events

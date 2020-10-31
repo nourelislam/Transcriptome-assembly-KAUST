@@ -46,3 +46,22 @@ suppa.py psiPerEvent --ioe-file ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg
 ##diffenretial experssion of local events ##
 suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --psi 33.salt_event.psi WT.salt_event.psi --tpm 33.salt.tsv WT.salt.tsv --area 1000 --lower-bound 0.05 -gc -o salt_cond
 
+#cold_Hours#
+suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --psi 33.cold3_event.psi 33.cold6_event.psi --tpm 33.cold3.tsv 33.cold6.tsv --area 1000 --lower-bound 0.05 -gc -o cold_hours
+suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --psi WT.cold3_event.psi WT.cold6_event.psi --tpm WT.cold3.tsv WT.cold6.tsv --area 1000 --lower-bound 0.05 -gc -o WT.cold_hours
+##salt_hours ##
+suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --psi 33.salt3_event.psi 33.salt6_event.psi --tpm 33.salt3.tsv 33.salt6.tsv --area 1000 --lower-bound 0.05 -gc -o 33.salt_hours
+suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --psi WT.salt3_event.psi WT.salt6_event.psi --tpm WT.salt3.tsv WT.salt6.tsv --area 1000 --lower-bound 0.05 -gc -o WT.salt_hours
+## control cond##
+suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --psi WT.cont_event.psi 33.cont_event.psi --tpm WT.cont_expression.tsv 33.cont_expression.tsv --area 1000 --lower-bound 0.05 -gc -o cont_cond
+
+
+
+
+
+
+
+
+
+
+

@@ -42,3 +42,7 @@ awk '{print $1,$6,$7,$12,$13,$14,$15,$16,$17}' OFS='\t' biotic_expression.tsv > 
 
 ## SUPPA2 event detection ##
 suppa.py psiPerEvent --ioe-file ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --expression-file expression_data.tsv -o events
+
+##diffenretial experssion of local events ##
+suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --psi 33.salt_event.psi WT.salt_event.psi --tpm 33.salt.tsv WT.salt.tsv --area 1000 --lower-bound 0.05 -gc -o salt_cond
+

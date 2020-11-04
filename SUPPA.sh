@@ -55,8 +55,9 @@ suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_S
 ## control cond##
 suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_SUPPA/ensembl_hg19.events.ioe --psi WT.cont_event.psi 33.cont_event.psi --tpm WT.cont_expression.tsv 33.cont_expression.tsv --area 1000 --lower-bound 0.05 -gc -o cont_cond
 
+#######
 
-
+awk -F '[; : \t]' '{print $1,$2,$(NF-1), $NF}' OFS="\t" cold_cond.dpsi| head
 
 
 

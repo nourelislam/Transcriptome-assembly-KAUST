@@ -59,7 +59,8 @@ suppa.py diffSplice --method empirical --input ~/Documents/DS/Whole_genome/new_S
 
 awk -F '[; : \t]' '{print $1,$2,$(NF-1), $NF}' OFS="\t" cold_cond.dpsi| head
 
-
+grep "SE" simple_event.psi > SE_events.psi
+awk -F '[; : \t]' '{print $1,$2,$(NF-11),$(NF-10),$(NF-9),$(NF-8),$(NF-7),$(NF-6),$(NF-5),$(NF-4),$(NF-3),$(NF-2),$(NF-1),$NF}' OFS="\t" SE_events.psi| head
 
 
 

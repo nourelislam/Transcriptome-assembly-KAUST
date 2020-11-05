@@ -61,7 +61,8 @@ grep "gene_name" gffcmp.combined.gtf | awk '{print $10, $14, $20}' > transcripts
 
 seqkit stats *gz -T | csvtk pretty -t > lane1.tsv
 
-
+### for Mac ###
+export PATH=/usr/local/bin
 
 
 
